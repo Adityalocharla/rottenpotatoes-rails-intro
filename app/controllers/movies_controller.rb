@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    @movies.sort {|a, b| a[:title] <=> b[:title]}
+    @movies.sort_by { |h | h[:title] }
   end
 
   def new
