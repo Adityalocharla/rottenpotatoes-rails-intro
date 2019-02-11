@@ -25,9 +25,9 @@ class MoviesController < ApplicationController
       redirect_to :sort => sort, :ratings => @selected_ratings and return
     end
     if sort == 'title'
-      @movies = Movie.all.sort_by { |h | h[:title] }
+      @movies = Movie.where(rating: @selected_ratings.keys).sort_by { |h | h[:title] }
     elsif sort == 'release_date'
-      @movies = Movie.all.sort_by { |h | h[:release_date] }
+      @movies = Movie.where(rating: @selected_ratings.keys).sort_by { |h | h[:release_date] }
     end
       
   end
