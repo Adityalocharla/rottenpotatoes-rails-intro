@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     sort = params[:sort]
     @movies = Movie.all
     @all_ratings = ['G','PG','PG-13','R']
-    @selected_ratings = params[:ratings]
+    @selected_ratings = params[:rating]
     if sort == 'title'
       @movies = Movie.all.sort_by { |h | h[:title] }
       @title_header = 'hilite'
