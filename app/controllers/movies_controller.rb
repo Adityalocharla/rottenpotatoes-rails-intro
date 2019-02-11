@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
   def index
     sort = params[:sort]
     @movies = Movie.all
+    @all_ratings = ['G','PG','PG-13','R']
     if sort == 'title'
       @movies = Movie.all.sort_by { |h | h[:title] }
       @title_header = 'hilite'
