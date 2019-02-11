@@ -12,17 +12,8 @@ class MoviesController < ApplicationController
 
   def index
     sort = params[:sort]
-    @movies = Movie.all
-    @title_header = []
-    @release_date_header = []
+    @movies = Movie.with_rating_sorting(@filters, sort)
     @all_ratings = ['G','PG','PG-13','R']
-    if sort == 'title'
-      @movies = Movie.all.sort_by { |h | h[:title] }
-      @title_header = ['hilite']
-    elsif sort == 'release_date'
-      @movies = Movie.all.sort_by { |h | h[:release_date] }
-      @release_date_header = ['hilite']
-    end
       
   end
 
