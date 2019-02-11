@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     if sort == 'title'
       @movies = Movie.all.sort_by { |h | h[:title] }
-      #title_header = 'hilite'
+      @title_header = 'hilite'
     elsif sort == 'release_date'
       @movies = Movie.all.sort_by { |h | h[:release_date] }
     end
