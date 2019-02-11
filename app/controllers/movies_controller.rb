@@ -12,7 +12,12 @@ class MoviesController < ApplicationController
 
   def index
     sort = params[:sort]
-    @movies = Movie.with_rating_sorting(@filters, sort)
+    if sort == 'title'
+      @movies = Movie.all.sort_by { |h | h[:title] }
+    elsif  sort == 'release_date'
+      @movies = Movie.all.sort_by { |h | h[:release_date] }
+    end
+    
       
   end
 
