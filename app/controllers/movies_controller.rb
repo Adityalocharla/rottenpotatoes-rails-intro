@@ -12,8 +12,14 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = ['G','PG','PG-13','R']
-    sort = params[:sort]
-    @movies = Movie.with_rating_sorting(@ratings, sort)
+  	setup = Movie.set_options(params, session)
+  	
+    @ratings = Movie.ratings
+    @filters = setup[:ratings]
+    @movies = Movie.movies(@filters, setup[:order_by])
+    
+    session[:ratings] = setup[:ratings]
+    session[:order_by] = setup[:order_by]
       
   end
 
