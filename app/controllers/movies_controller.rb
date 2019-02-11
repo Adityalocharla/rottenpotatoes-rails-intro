@@ -17,10 +17,8 @@ class MoviesController < ApplicationController
     @selected_ratings = params[:rating]
     if sort == 'title'
       @movies = Movie.all.sort_by { |h | h[:title] }
-      @title_header = 'hilite'
     elsif sort == 'release_date'
       @movies = Movie.all.sort_by { |h | h[:release_date] }
-      @release_date_header = 'hilite'
     end
       
   end
