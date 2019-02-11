@@ -16,10 +16,10 @@ class MoviesController < ApplicationController
   	
     @ratings = Movie.ratings
     @filters = setup[:ratings]
-    @movies = Movie.movies(@filters, setup[:order_by])
+    @movies = Movie.movies(@filters, setup[:sort])
     
     session[:ratings] = setup[:ratings]
-    session[:order_by] = setup[:order_by]
+    session[:sort] = setup[:sort]
       
   end
 
