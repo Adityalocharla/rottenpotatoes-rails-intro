@@ -28,6 +28,8 @@ class MoviesController < ApplicationController
       @movies = Movie.where(rating: @selected_ratings.keys).sort_by { |h | h[:title] }
     elsif sort == 'release_date'
       @movies = Movie.where(rating: @selected_ratings.keys).sort_by { |h | h[:release_date] }
+    else
+      @movies = Movie.where(rating: @selected_ratings.keys)
     end
       
   end
