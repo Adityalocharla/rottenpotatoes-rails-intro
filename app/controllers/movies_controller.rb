@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     sort = params[:sort]
     @movies = Movie.all
     @all_ratings = ['G','PG','PG-13','R']
-    params[:ratings] = ['G','PG','PG-13','R']
+    @selected_ratings = params[:ratings]
     if sort == 'title'
       @movies = Movie.all.sort_by { |h | h[:title] }
     elsif sort == 'release_date'
