@@ -11,22 +11,14 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @all_ratings = ['G','PG','PG-13','R']
-  	setup = Movie.set_options(params, session)
-  	
-    @ratings = Movie.ratings
-    @filters = setup[:ratings]
-    @movies = Movie.movies(@filters, setup[:sort])
-    
-    session[:ratings] = setup[:ratings]
-    session[:sort] = setup[:sort]
+    sort = params[:sort]
+    @movies = Movie.with_rating_sorting(@filters, sort)
       
   end
 
   def new
     # default: render 'new' template
-  end
-
+  endexit
   def create
     @movie = Movie.create!(movie_params)
     flash[:notice] = "#{@movie.title} was successfully created."
