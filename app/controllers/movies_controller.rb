@@ -15,7 +15,6 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     @title_header = []
     @release_date_header = []
-    @release_date_header = 
     @all_ratings = ['G','PG','PG-13','R']
     if sort == 'title'
       @movies = Movie.all.sort_by { |h | h[:title] }
