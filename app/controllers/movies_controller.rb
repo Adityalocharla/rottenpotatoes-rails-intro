@@ -15,9 +15,9 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     @all_ratings = ['G','PG','PG-13','R']
     @selected_ratings = params[:ratings] || session[:ratings] || {}
-    -#if @selected_ratings == {}
-    -#  @selected_ratings = Hash[@all_ratings.map {|rating| [rating, rating]}]
-    -#end
+    if @selected_ratings == {}
+      @selected_ratings = Hash[@all_ratings.map {|rating| [rating, rating]}]
+    end
     
     if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
       session[:sort] = sort
